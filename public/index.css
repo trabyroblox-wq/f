@@ -1,33 +1,391 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
+/* Windows 2000 / Classic Windows UI Style */
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+	--win-bg: #008080; /* classic teal desktop */
+	--win-gray: #d4d0c8;
+	--win-dark-gray: #808080;
+	--win-darker: #404040;
+	--win-white: #ffffff;
+	--win-black: #000000;
+	--win-blue-title: #000080;
+	--win-title-text: #ffffff;
+	--win-shadow-dark: #404040;
+	--win-shadow-light: #ffffff;
+	--win-border-outer-dark: #808080;
+	--win-border-outer-light: #dfdfdf;
+	--win-inset-dark: #808080;
+	--win-inset-light: #ffffff;
+	--win-highlight: #000080;
+	--win-highlight-text: #ffffff;
+}
+
+/* Reset */
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 
 body {
-	font-family: "Roboto", Arial, Helvetica, sans-serif;
-	margin: 0;
-	background: #111;
+	font-family: "MS Sans Serif", "Microsoft Sans Serif", "Tahoma", Arial, sans-serif;
+	font-size: 11px;
+	background-color: var(--win-bg);
+	background-image:
+		url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAF0lEQVQI12NgYGD4z8BQDwAAAP//AwAI/AL+hc2rNAAAAABJRU5ErkJggg==");
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
-}
-
-.fa-magnifying-glass {
-	color: white;
-}
-
-.flex-center {
-	display: flex;
-	justify-content: center;
-}
-
-.header-center {
 	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 20px;
+}
+
+/* ── Window chrome ────────────────────────── */
+.win-window {
+	background: var(--win-gray);
+	border-top: 2px solid var(--win-shadow-light);
+	border-left: 2px solid var(--win-shadow-light);
+	border-right: 2px solid var(--win-shadow-dark);
+	border-bottom: 2px solid var(--win-shadow-dark);
+	box-shadow: 1px 1px 0 var(--win-black), -1px -1px 0 var(--win-border-outer-light);
+	width: 520px;
+	max-width: 100%;
+}
+
+/* Title bar */
+.win-titlebar {
+	background: linear-gradient(to right, var(--win-blue-title) 0%, #1084d0 100%);
+	color: var(--win-title-text);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3px 4px 3px 6px;
+	user-select: none;
+	height: 22px;
+}
+
+.win-titlebar-left {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.win-titlebar-icon {
+	width: 16px;
+	height: 16px;
+}
+
+.win-titlebar-buttons {
+	display: flex;
+	gap: 2px;
+}
+
+.win-btn-sm {
+	width: 16px;
+	height: 14px;
+	background: var(--win-gray);
+	border-top: 1px solid var(--win-shadow-light);
+	border-left: 1px solid var(--win-shadow-light);
+	border-right: 1px solid var(--win-shadow-dark);
+	border-bottom: 1px solid var(--win-shadow-dark);
+	font-size: 9px;
+	font-weight: bold;
+	color: var(--win-black);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	font-family: "Marlett", "Webdings", Arial, sans-serif;
+}
+
+.win-btn-sm:active {
+	border-top: 1px solid var(--win-shadow-dark);
+	border-left: 1px solid var(--win-shadow-dark);
+	border-right: 1px solid var(--win-shadow-light);
+	border-bottom: 1px solid var(--win-shadow-light);
+}
+
+/* Window content area */
+.win-content {
+	padding: 12px 16px 16px;
+	display: flex;
 	flex-direction: column;
-	margin-top: 10%;
+	gap: 10px;
 }
 
-.left-margin {
-	margin: 0px 16px;
+/* Menu bar */
+.win-menubar {
+	display: flex;
+	gap: 0;
+	padding: 2px 4px;
+	border-bottom: 1px solid var(--win-dark-gray);
+	background: var(--win-gray);
 }
 
+.win-menu-item {
+	padding: 2px 8px;
+	font-size: 11px;
+	cursor: pointer;
+	color: var(--win-black);
+	text-decoration: none;
+}
+
+.win-menu-item:hover {
+	background: var(--win-highlight);
+	color: var(--win-highlight-text);
+}
+
+/* Logo / header area */
+.logo-area {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 0 4px;
+}
+
+.logo {
+	width: 48px;
+	height: 48px;
+	image-rendering: pixelated;
+}
+
+.logo-text h1 {
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--win-black);
+	line-height: 1.2;
+}
+
+.logo-text p {
+	font-size: 10px;
+	color: var(--win-darker);
+}
+
+/* Inset / sunken panel */
+.win-inset {
+	background: var(--win-white);
+	border-top: 1px solid var(--win-shadow-dark);
+	border-left: 1px solid var(--win-shadow-dark);
+	border-right: 1px solid var(--win-shadow-light);
+	border-bottom: 1px solid var(--win-shadow-light);
+	padding: 6px 8px;
+	font-size: 11px;
+	color: var(--win-darker);
+	line-height: 1.5;
+}
+
+/* Group box (classic Windows groupbox look) */
+.win-groupbox {
+	border: 1px solid var(--win-dark-gray);
+	border-top: 1px solid var(--win-dark-gray);
+	padding: 14px 10px 10px;
+	position: relative;
+	margin-top: 6px;
+}
+
+.win-groupbox-label {
+	position: absolute;
+	top: -7px;
+	left: 8px;
+	background: var(--win-gray);
+	padding: 0 4px;
+	font-size: 11px;
+	font-weight: bold;
+	color: var(--win-black);
+}
+
+/* Search row */
+.win-search-row {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+
+.win-label {
+	font-size: 11px;
+	color: var(--win-black);
+	white-space: nowrap;
+	min-width: 60px;
+}
+
+#uv-address {
+	flex: 1;
+	font-family: "MS Sans Serif", "Tahoma", Arial, sans-serif;
+	font-size: 11px;
+	background: var(--win-white);
+	color: var(--win-black);
+	border-top: 1px solid var(--win-shadow-dark);
+	border-left: 1px solid var(--win-shadow-dark);
+	border-right: 1px solid var(--win-shadow-light);
+	border-bottom: 1px solid var(--win-shadow-light);
+	padding: 2px 6px;
+	outline: none;
+	border-radius: 0;
+	height: 22px;
+}
+
+#uv-address:focus {
+	outline: 1px dotted var(--win-black);
+	outline-offset: -2px;
+}
+
+/* Classic Windows button */
+.win-button {
+	font-family: "MS Sans Serif", "Tahoma", Arial, sans-serif;
+	font-size: 11px;
+	background: var(--win-gray);
+	color: var(--win-black);
+	border-top: 2px solid var(--win-shadow-light);
+	border-left: 2px solid var(--win-shadow-light);
+	border-right: 2px solid var(--win-shadow-dark);
+	border-bottom: 2px solid var(--win-shadow-dark);
+	padding: 3px 16px;
+	cursor: pointer;
+	outline: none;
+	min-width: 75px;
+	height: 23px;
+	white-space: nowrap;
+}
+
+.win-button:active {
+	border-top: 2px solid var(--win-shadow-dark);
+	border-left: 2px solid var(--win-shadow-dark);
+	border-right: 2px solid var(--win-shadow-light);
+	border-bottom: 2px solid var(--win-shadow-light);
+	padding: 4px 15px 2px 17px;
+}
+
+.win-button:focus {
+	outline: 1px dotted var(--win-black);
+	outline-offset: -4px;
+}
+
+.win-button.default {
+	border-top: 2px solid var(--win-shadow-light);
+	border-left: 2px solid var(--win-shadow-light);
+	border-right: 2px solid var(--win-shadow-dark);
+	border-bottom: 2px solid var(--win-shadow-dark);
+	box-shadow: 0 0 0 1px var(--win-black) inset;
+}
+
+/* Error display */
+#uv-error {
+	color: #cc0000;
+	font-size: 11px;
+}
+
+#uv-error-code {
+	font-size: 10px;
+	color: var(--win-darker);
+	font-family: "Courier New", Courier, monospace;
+	background: var(--win-white);
+	border: 1px inset var(--win-dark-gray);
+	padding: 4px;
+	margin-top: 4px;
+	display: block;
+	white-space: pre-wrap;
+}
+
+/* Status bar */
+.win-statusbar {
+	border-top: 1px solid var(--win-dark-gray);
+	padding: 2px 8px;
+	font-size: 10px;
+	color: var(--win-darker);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.win-statusbar-panel {
+	border-top: 1px solid var(--win-shadow-dark);
+	border-left: 1px solid var(--win-shadow-dark);
+	border-right: 1px solid var(--win-shadow-light);
+	border-bottom: 1px solid var(--win-shadow-light);
+	padding: 1px 6px;
+	font-size: 10px;
+	color: var(--win-darker);
+}
+
+/* Footer / Links panel */
+.win-footer-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 16px;
+	padding: 6px 0 2px;
+}
+
+.win-footer-links a {
+	font-size: 11px;
+	color: #00008b;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.win-footer-links a:hover {
+	color: #cc0000;
+}
+
+/* Taskbar at the bottom */
+.win-taskbar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 28px;
+	background: var(--win-gray);
+	border-top: 2px solid var(--win-shadow-light);
+	display: flex;
+	align-items: center;
+	padding: 0 4px;
+	gap: 4px;
+	z-index: 100;
+}
+
+.win-start-btn {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-family: "MS Sans Serif", "Tahoma", Arial, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	background: var(--win-gray);
+	color: var(--win-black);
+	border-top: 2px solid var(--win-shadow-light);
+	border-left: 2px solid var(--win-shadow-light);
+	border-right: 2px solid var(--win-shadow-dark);
+	border-bottom: 2px solid var(--win-shadow-dark);
+	padding: 2px 8px 2px 4px;
+	cursor: pointer;
+	height: 22px;
+}
+
+.win-start-icon {
+	font-size: 14px;
+}
+
+.win-taskbar-spacer {
+	flex: 1;
+}
+
+.win-clock {
+	font-family: "MS Sans Serif", "Tahoma", Arial, sans-serif;
+	font-size: 11px;
+	color: var(--win-black);
+	border-top: 1px solid var(--win-shadow-dark);
+	border-left: 1px solid var(--win-shadow-dark);
+	border-right: 1px solid var(--win-shadow-light);
+	border-bottom: 1px solid var(--win-shadow-light);
+	padding: 2px 8px;
+	min-width: 60px;
+	text-align: center;
+}
+
+/* Hidden UV frame */
 #uv-frame {
 	border: none;
 	position: absolute;
@@ -35,150 +393,60 @@ body {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: #111;
-}
-
-#uv-error {
-	color: #ff6666 !important;
-	white-space: pre-wrap;
-}
-
-#uv-error-code {
-	font-size: 12px;
-	color: #fff;
-	font-family: "Courier New", Courier, monospace;
-}
-
-#uv-register-sw {
-	color: white;
-	background: #555555;
-	cursor: pointer;
-	outline: none;
-	border: none;
-	border-radius: 6px;
-	padding: 16px 20px;
-	line-height: 16px;
+	background-color: var(--win-white);
+	z-index: 9999;
 	display: none;
 }
 
-#uv-register-sw:active {
-	background: #333333;
-}
-
-#uv-register-sw.show {
-	display: block;
-}
-
-.logo {
-	width: 150px;
-	height: 150px;
-}
-
-.logo-wrapper .text {
-	font-size: 75px;
-	color: #fff;
-}
-
-.logo-wrapper h1 {
-	color: white;
-}
-
-footer {
-	margin: 0 5vw;
-	margin-top: auto;
-	display: flex;
-	flex-direction: column;
-	line-height: 30px;
-	margin-bottom: 20px;
-}
-
-footer > div {
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	flex-wrap: wrap;
-	margin-bottom: 15px;
-}
-
-footer a,
-footer span {
-	margin: 0 15px;
-	text-decoration: none;
-	color: #fff;
-	font-size: 15px;
-}
-
-footer a {
-	cursor: pointer;
-}
-
-footer a:hover {
-	text-decoration: underline;
-}
-
-.desc p {
-	width: 560px;
-	color: rgba(253, 253, 253, 0.514);
-}
-
-#uv-address {
-	background: none;
-	font-family: inherit;
-	padding: 0px 17px;
-	height: 48px;
-	border: 1px solid rgb(255, 255, 255, 0.2);
-	color: var(--text-color);
-	border-radius: 3px;
-	outline: none;
-	width: 350px;
-	margin-top: 5px;
-	border-radius: 50px;
-	color: #fff;
-	transition: border-radius 0.1s;
-}
-
-#uv-address:focus {
-	border: 1px solid rgba(253, 253, 253, 0.514);
-	border-radius: 6px;
-}
-
+/* credits page compat */
 .credit {
-	border-radius: 10px;
-	padding: 10px;
-	display: block;
-	border: #fff 1px solid;
-	color: #fff;
+	border-radius: 0;
+	padding: 6px;
+	border: 1px inset var(--win-dark-gray);
+	color: var(--win-black);
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+	background: var(--win-gray);
 }
 
 .credit label {
 	margin-left: auto;
-	margin-right: 15px;
+	margin-right: 10px;
 }
 
-.credit a,
-.credit label {
-	color: white;
+.credit a, .credit label {
+	color: #00008b;
 	text-decoration: underline;
-	text-align: right;
 }
 
 .credit pre {
 	display: none;
 	width: 100%;
+	font-size: 10px;
+	background: var(--win-white);
+	border: 1px inset var(--win-dark-gray);
+	padding: 4px;
+	margin-top: 6px;
 }
 
-.credit label::after {
-	content: "show license";
-	cursor: pointer;
+.credit label::after { content: "show license"; cursor: pointer; }
+.credit input:checked + label::after { content: "hide license"; }
+.credit input:checked ~ pre { display: block; }
+
+/* Scrollbar retro style */
+::-webkit-scrollbar { width: 16px; }
+::-webkit-scrollbar-track { background: var(--win-gray); }
+::-webkit-scrollbar-thumb {
+	background: var(--win-gray);
+	border-top: 1px solid var(--win-shadow-light);
+	border-left: 1px solid var(--win-shadow-light);
+	border-right: 1px solid var(--win-shadow-dark);
+	border-bottom: 1px solid var(--win-shadow-dark);
 }
 
-.credit input:checked + label::after {
-	content: "hide license";
-}
-
-.credit input:checked ~ pre {
-	display: block;
-}
+/* Flex helpers kept for compat */
+.flex-center { display: flex; justify-content: center; }
+.header-center { align-items: center; flex-direction: column; }
+.left-margin { margin: 0 8px; }
+.desc p { color: var(--win-darker); }
